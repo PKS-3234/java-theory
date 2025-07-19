@@ -54,3 +54,76 @@ In Java, == operator for objects (including String objects) compares their memor
 When you do String reversed_string = sb.toString();, you are creating a new String object in memory. Even if its content is identical to name, it will be a different object. So, name == reversed_string will almost always evaluate to false, even if the string is a palindrome.
 
 To compare the actual content of two strings in Java, you must use the .equals() method
+
+-------------------------------------------------------------------------------
+
+Okay, no problem! Let's go with the most efficient and common solution for Problem 8: Contains Duplicate using a HashSet. This method is generally preferred in interviews for its time complexity.
+
+Problem 8: Contains Duplicate (Solution using HashSet)
+Concept:
+
+A HashSet in Java stores only unique elements. If you try to add an element that is already present in the HashSet, the add() method returns false. We can leverage this property to detect duplicates.
+
+Algorithm:
+
+Create an empty HashSet.
+
+Iterate through each number in the given nums array.
+
+For each number:
+
+Try to add it to the HashSet.
+
+If add() returns false, it means the number was already in the HashSet, indicating a duplicate. In this case, we immediately know there's a duplicate, so we can print "true" and stop.
+
+If the loop finishes without finding any duplicates (i.e., add() always returned true), it means all elements were distinct. In this case, we print "false".
+
+----------------------------------------------------------------------------------------------------------
+
+
+That's an excellent follow-up question! It naturally extends the "Contains Duplicate" problem and leads us to use another very powerful and common data structure in Java: a HashMap (or Dictionary in Python, Map in general).
+
+Instead of just checking if a duplicate exists, you want to count how many times each number appears.
+Solution Concept: Using HashMap
+A HashMap stores data in key-value pairs.
+
+Key: In this problem, the unique number itself will be the key.
+
+Value: The count of how many times that number has appeared will be the value.
+
+Algorithm:
+
+Create an empty HashMap<Integer, Integer> (where the key is the number and the value is its count).
+
+Iterate through each number in the input nums array.
+
+For each currentNum:
+
+Check if currentNum is already a key in the HashMap.
+
+If it is present, get its current count, increment it by 1, and update the count in the HashMap.
+
+If it is not present, it means this is the first time we've seen this number, so add it to the HashMap with a count of 1.
+
+After iterating through the entire array, iterate through the entrySet() of the HashMap (which gives you each key-value pair) and print the number (key) and its count (value).
+
+
+-------------------------------------------------------------------------------
+
+
+
+Enhanced For-Loop (for (int currentNum : nums)):
+This type of loop is designed to iterate directly over the elements of an array or collection, not their indices.
+
+In the first iteration, currentNum will be nums[0].
+
+In the second iteration, currentNum will be nums[1].
+
+...and so on, until currentNum holds the value of nums[n-1].
+
+So, currentNum is the value you want to use as the key in your HashMap.
+
+Traditional For-Loop (for (int i = 0; i < n; i++) { int currentNum = nums[i]; ... }):
+Here, you explicitly get the value at index i by saying int currentNum = nums[i];. Again, currentNum holds the value.
+
+
