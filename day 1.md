@@ -43,3 +43,14 @@ StringBuffer: Thread-safe (synchronized). This means its methods are synchronize
 but it comes with a performance cost due to the synchronization overhead, making it slower than StringBuilder.
 
 ----------------------------------------------------------------
+You're on the right track for Problem 4: Check Palindrome String by thinking about using StringBuilder.reverse(), which you just learned!
+
+However, there's a crucial detail in Java when comparing strings that often trips up beginners:
+
+The Issue: == vs. .equals() for String Comparison
+
+In Java, == operator for objects (including String objects) compares their memory addresses (i.e., if they are the exact same object in memory). It does not compare their content.
+
+When you do String reversed_string = sb.toString();, you are creating a new String object in memory. Even if its content is identical to name, it will be a different object. So, name == reversed_string will almost always evaluate to false, even if the string is a palindrome.
+
+To compare the actual content of two strings in Java, you must use the .equals() method
